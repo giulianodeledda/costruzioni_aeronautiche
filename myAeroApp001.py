@@ -36,16 +36,27 @@ def doIt(self):
 def doPlot01(self):
     df = getAeroData(float(cd0_entry.get()), float(k_entry.get()), float(clmin_entry.get()), float(clmax_entry.get()), int(pcl_entry.get()))
     values = df.to_numpy()
-    plotIt(values[:,0],values[:,1])
+    plotIt(values[:,0],values[:,1],1)
     print("done..."+version())
     pass
 def doPlot02(self):
     df = getAeroData(float(cd0_entry.get()), float(k_entry.get()), float(clmin_entry.get()), float(clmax_entry.get()), int(pcl_entry.get()))
     values = df.to_numpy()
-    plotIt(values[:,0],values[:,2])
+    plotIt(values[:,0],values[:,2],2)
     print("done..."+version())
     pass
-
+def doPlot03(self):
+    df = getAeroData(float(cd0_entry.get()), float(k_entry.get()), float(clmin_entry.get()), float(clmax_entry.get()), int(pcl_entry.get()))
+    values = df.to_numpy()
+    plotIt(values[:,0],values[:,3],3)
+    print("done..."+version())
+    pass
+def doPlot04(self):
+    df = getAeroData(float(cd0_entry.get()), float(k_entry.get()), float(clmin_entry.get()), float(clmax_entry.get()), int(pcl_entry.get()))
+    values = df.to_numpy()
+    plotIt(values[:,0],values[:,4],4)
+    print("done..."+version())
+    pass
 root = Tk()
 root.title("Dipartimento di Meccanica e Aeronautica - Polare Aerodinamica")
 root.geometry(str(rw_width)+"x"+str(rw_height))
@@ -98,15 +109,21 @@ pcl.set("10")
 pcl_entry.bind("<Key-Return>", doIt)
 
 currentIndex = getIndex()
-doIt_button = Button(text="Esegui")
-doIt_button.place(x=getPositionGrid(currentIndex, 1)[0], y=getPositionGrid(currentIndex, 1)[1])
-doIt_button.bind("<Button-1>", doIt)
-doIt_button = Button(text="Polare Aer.")
-doIt_button.place(x=getPositionGrid(currentIndex, 2.5)[0], y=getPositionGrid(currentIndex, 2.5)[1])
-doIt_button.bind("<Button-1>", doPlot01)
-doIt_button = Button(text="Eff. Aer.")
-doIt_button.place(x=getPositionGrid(currentIndex, 4.5)[0], y=getPositionGrid(currentIndex, 4.5)[1])
-doIt_button.bind("<Button-1>", doPlot02)
+doIt01_button = Button(text="Esegui")
+doIt01_button.place(x=getPositionGrid(currentIndex, 1)[0], y=getPositionGrid(currentIndex, 1)[1])
+doIt01_button.bind("<Button-1>", doIt)
+doIt02_button = Button(text="Polare Aer.")
+doIt02_button.place(x=getPositionGrid(currentIndex, 2.5)[0], y=getPositionGrid(currentIndex, 2.5)[1])
+doIt02_button.bind("<Button-1>", doPlot01)
+doIt03_button = Button(text="E")
+doIt03_button.place(x=getPositionGrid(currentIndex, 4.5)[0], y=getPositionGrid(currentIndex, 4.5)[1])
+doIt03_button.bind("<Button-1>", doPlot02)
+doIt04_button = Button(text="E√CL")
+doIt04_button.place(x=getPositionGrid(currentIndex, 5.5)[0], y=getPositionGrid(currentIndex, 5.5)[1])
+doIt04_button.bind("<Button-1>", doPlot03)
+doIt05_button = Button(text="E/√CL")
+doIt05_button.place(x=getPositionGrid(currentIndex, 7.0)[0], y=getPositionGrid(currentIndex, 6.5)[1])
+doIt05_button.bind("<Button-1>", doPlot04)
 
 
 currentIndex = getIndex()
